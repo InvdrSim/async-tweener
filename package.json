@@ -1,0 +1,19 @@
+{
+  "name": "com.sp.async-tweener",
+  "displayName": "Async Tweener",
+  "description": "A generic tweener built on UniTask.",
+  "version": "1.0.0",
+  "unity": "2018.4",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/InvdrSim/async-tweener.git"
+  },
+  "author": "Simon Pähler <simon@paehler.dev> (https://simon.paehler.dev)",
+  "dependencies": {
+    "com.cysharp.unitask": "2.4.1"
+  },
+  "keywords": [
+    "tween", "async", "task", "unitask"
+  ]
+}
