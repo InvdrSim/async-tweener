@@ -7,7 +7,7 @@ namespace SP.AsyncTweener
 {
     public static class Tweener
     {
-        public static UniTask<bool> TweenAsync<T>(
+        public static UniTask TweenAsync<T>(
             ITweenSettings<T> settings,
             CancellationToken cancellationToken = default)
             where T : struct
@@ -20,7 +20,7 @@ namespace SP.AsyncTweener
                 cancellationToken);
         }
 
-        public static async UniTask<bool> TweenAsync<T>(
+        public static async UniTask TweenAsync<T>(
             T from, T to,
             float duration, float delay, bool ignoreTimeScale,
             Func<T, T, float, T> interpolation, Func<float, float> easing,
@@ -28,8 +28,7 @@ namespace SP.AsyncTweener
             CancellationToken cancellationToken = default)
         {
             await UniTask.WaitForSeconds(delay, ignoreTimeScale, cancellationToken: cancellationToken);
-            if (cancellationToken.IsCancellationRequested)
-                return false;
+            cancellationToken.ThrowIfCancellationRequested();
 
             if (duration > 0)
             {
@@ -43,16 +42,13 @@ namespace SP.AsyncTweener
                     T value = interpolation(from, to, amount);
                     onChanged?.Invoke(value);
                     await UniTask.Yield(cancellationToken);
-                    if (cancellationToken.IsCancellationRequested)
-                        return false;
+                    cancellationToken.ThrowIfCancellationRequested();
                 }
             }
             else
             {
                 onChanged?.Invoke(to);
             }
-
-            return true;
         }
     }
 }
