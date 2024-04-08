@@ -2,7 +2,7 @@ using System;
 
 namespace SP.AsyncTweener
 {
-    public struct TweenSettings<T> : ITweenSettings<T> where T : struct
+    public struct Tween<T> : ITween<T> where T : struct
     {
         public T from { get; set; }
         public T to { get; set; }
