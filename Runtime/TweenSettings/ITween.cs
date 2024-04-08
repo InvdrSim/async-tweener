@@ -2,7 +2,7 @@ using System;
 
 namespace SP.AsyncTweener
 {
-    public interface ITweenSettings<T> where T : struct
+    public interface ITween<T> where T : struct
     {
         T from { get; }
         T to { get; }
