@@ -8,7 +8,7 @@ namespace SP.AsyncTweener
     public static class Tweener
     {
         public static UniTask TweenAsync<T>(
-            ITweenSettings<T> settings,
+            ITween<T> settings,
             CancellationToken cancellationToken = default)
             where T : struct
         {
