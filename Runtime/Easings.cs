@@ -6,7 +6,7 @@ namespace SP.AsyncTweener
     /// <summary>
     ///     Contains different interpolation ease functions.
     /// </summary>
-    public static class Interpolations
+    public static class Easings
     {
         public enum Direction
         {

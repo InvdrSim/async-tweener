@@ -2,7 +2,7 @@
   "name": "com.sp.async-tweener",
   "displayName": "Async Tweener",
   "description": "A generic tweener built on UniTask.",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "unity": "2018.4",
   "license": "MIT",
   "repository": {
