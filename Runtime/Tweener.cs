@@ -32,7 +32,7 @@ namespace SP.AsyncTweener
 
             if (duration > 0)
             {
-                easing ??= Interpolations.Linear;
+                easing ??= Easings.Linear;
                 float elapsedTime = 0f;
                 while (elapsedTime < duration)
                 {
@@ -49,6 +49,25 @@ namespace SP.AsyncTweener
             {
                 onChanged?.Invoke(to);
             }
+        }
+
+        public static UniTask TweenAsync(float from, float to, float duration, Action<float> onChanged,
+            float delay = 0, bool ignoreTimeScale = false, Func<float, float> easing = null,
+            CancellationToken cancellationToken = default)
+        {
+            if (easing == null)
+                easing = Easings.Linear;
+
+            return TweenAsync(new FloatTween
+            {
+                from = from,
+                to = to,
+                duration = duration,
+                delay = delay,
+                ignoreTimeScale = ignoreTimeScale,
+                onChanged = onChanged,
+                easing = easing
+            }, cancellationToken);
         }
     }
 }
